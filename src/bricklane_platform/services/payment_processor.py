@@ -10,11 +10,11 @@ class PaymentProcessor(object):
         with open(csv_path) as f:
             reader = csv.DictReader(f)
             for row in reader:
-                payments.append(Payment(row))
+                payments.append(Payment(row, source))
 
         return payments
 
-    def verify_payments(self, payments):
+    def verify_payments(self, payments, source):
         successful_payments = []
         for payment in payments:
             if payment.is_successful():

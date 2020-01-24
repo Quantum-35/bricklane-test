@@ -16,7 +16,7 @@ def main(csv_path, source, share_price):
 
     payment_processor = PaymentProcessor()
     payments = payment_processor.get_payments(csv_path, source)
-    eligible_payments = payment_processor.verify_payments(payments)
+    eligible_payments = payment_processor.verify_payments(payments, source)
 
     share_engine = ShareEngine()
     share_orders = share_engine.generate_share_orders(share_price, eligible_payments)
