@@ -43,6 +43,14 @@ class Payment(object):
 
             bank = Bank()
             bank.bank_account_id = int(data["bank_account_id"])
+            self.bank = bank
+            if self.amount < total_amount and self.amount > 1:
+                bank.status='processed'
+            else:
+                bank.status='failed'
 
-    def is_successful(self):
-        return self.card.status == "processed"
+    def is_successful(self, source):
+        if source == 'card':
+            return self.card.status == "processed"
+        if source == 'bank':
+            return self.bank.status == "processed"

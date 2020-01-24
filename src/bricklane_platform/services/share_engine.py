@@ -3,7 +3,8 @@ from bricklane_platform.util import group_by
 
 class ShareEngine(object):
 
-    def generate_share_orders(self, share_price, payments):
+    def generate_share_orders(self, share_price, payments, source = 'card'):
+        print('HERE')
         payments_by_customer = group_by(
             payments,
             lambda payment: payment.customer_id,
