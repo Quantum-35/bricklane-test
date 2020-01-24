@@ -20,7 +20,7 @@ def main(csv_path, source, share_price):
 
 
     share_engine = ShareEngine()
-    share_orders = share_engine.generate_share_orders(share_price, eligible_payments, source)
+    share_orders = share_engine.generate_share_orders(share_price, eligible_payments)
 
     return generate_csv(["customer_id", "shares"], sorted(share_orders))
 
