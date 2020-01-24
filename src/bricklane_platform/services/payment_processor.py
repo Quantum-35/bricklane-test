@@ -16,7 +16,6 @@ class PaymentProcessor(object):
 
     def verify_payments(self, payments, source):
         successful_payments = []
-        print('@@@', payments)
         for payment in payments:
             print(payment.__dict__)
             if payment.is_successful(source):
