@@ -9,13 +9,19 @@ class PaymentProcessor(object):
         payments = []
         with open(csv_path) as f:
             reader = csv.DictReader(f)
-            for row in reader:
-                payments.append(Payment(row, source))
+            if source == 'card':
+                for row in reader:
+                    payments.append(Payment(row, source))
+            elif source == 'bank':
+                for row in reader:
+                    print(row)
+                    pass
 
         return payments
 
     def verify_payments(self, payments, source):
         successful_payments = []
+        print('0-->', payments)
         for payment in payments:
             if payment.is_successful():
                 successful_payments.append(payment)
